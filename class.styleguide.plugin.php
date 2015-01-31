@@ -3,7 +3,7 @@
 $PluginInfo['styleguide'] = array(
   'Name'        => "Styleguide",
   'Description' => "Living styleguide generator for KSS documented Vanilla themes.",
-  'Version'     => '1.0.0',
+  'Version'     => '1.0.1',
   'PluginUrl'   => 'https://github.com/kasperisager/vanilla-styleguide',
   'Author'      => "Kasper Kronborg Isager",
   'AuthorEmail' => 'kasperisager@gmail.com',
