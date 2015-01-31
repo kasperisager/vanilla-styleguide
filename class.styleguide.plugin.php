@@ -29,14 +29,15 @@ class StyleguidePlugin extends Gdn_Plugin {
   private $stylesheetFolders = ['less', 'sass', 'scss', 'design'];
 
   /**
-   * This will run when you "Enable" the plugin
+   * Render menu link in the dashboard sidebar.
    *
-   * @since   1.0.0
-   * @access  public
-   * @return  bool
+   * @since  1.0.1
+   * @access public
+   * @param  Gdn_Controller $sender
    */
-  public function setup() {
-    return true;
+  public function Base_getAppSettingsMenuItems_handler($sender) {
+    $menu = $sender->EventArguments['SideMenu'];
+    $menu->addLink('Appearance', t('Styleguide'), 'vanilla/styleguide');
   }
 
   /**
