@@ -1,0 +1,32 @@
+{
+    "name": "scan/kss-php",
+    "description": "A PHP implementation of KSS: a methodology for documenting CSS and generating styleguides",
+    "keywords": [
+        "kss",
+        "styleguide",
+        "css documentation"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/finder": "~2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "authors": [
+        {
+            "name": "Russell Ahlstrom",
+            "email": "russell.ahlstrom@gmail.com",
+            "homepage": "http://russell.ahlstromology.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Scan\\Kss\\": "lib/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

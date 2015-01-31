@@ -1,0 +1,18 @@
+{
+  "name": "kasperisager/vanilla-styleguide",
+  "description": "Living styleguide generator for KSS documented Vanilla themes.",
+  "authors": [
+    {
+      "name": "Kasper Kronborg Isager",
+      "email": "kasperisager@gmail.com"
+    }
+  ],
+  "require": {
+    "scan/kss-php": "1.0.x",
+    "kukulich/fshl": "2.1.x"
+  },
+  "minimum-stability": "beta",
+  "config": {
+    "vendor-dir": "library/vendors"
+  }
+}

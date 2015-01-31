@@ -1,0 +1,21 @@
+{
+  "name": "vanilla-styleguide",
+  "private": true,
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-csso": "*",
+    "gulp-less": "*",
+    "gulp-livereload": "*",
+    "gulp-load-plugins": "*",
+    "gulp-plumber": "*",
+    "gulp-size": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch"
+  }
+}
