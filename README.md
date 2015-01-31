@@ -21,7 +21,7 @@ $ npm install
 ### Tasks
 
 #### Build - `npm run build`
-Compiles all theme assets using Gulp. LESS stylesheets will be compiled to [`design/custom.css`](design/custom.css) and Javascripts will be concatenated and output to [`js/custom.js`](js/custom.js).
+Compiles all plugin assets using Gulp. LESS stylesheets will be compiled to [`design/styleguide.css`](design/styleguide.css);
 
 #### Watch - `npm run watch`
 Watches the assets for changes and runs the appropriate Gulp tasks. Also starts a Livereload server that will push the changes to your Vanilla installation automatically.
