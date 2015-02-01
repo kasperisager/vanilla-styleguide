@@ -166,6 +166,80 @@
     text-transform: none;
   }
 
+  .styleguide-status {
+    margin: 0 -1px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-top: 0;
+  }
+  .styleguide-status:before {
+    display: block;
+    height: 5px;
+    margin: 0 -1px;
+    background-color: rgba(0,0,0,.2);
+    background-image: linear-gradient(
+      -45deg,
+      rgba(0,0,0,.2) 30%,
+      transparent 30%,
+      transparent 50%,
+      rgba(0,0,0,.2) 50%,
+      rgba(0,0,0,.2) 70%,
+      transparent 70%,
+      transparent
+    );
+    background-size: 12px 12px;
+    content: "";
+  }
+  .styleguide-status p {
+    margin: 0;
+    font-family: @font-family--base;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .styleguide-status-content {
+    display: table;
+    width: 100%;
+  }
+
+  .styleguide-status-label {
+    width: 100px;
+    font-family: @font-family--base;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: center;
+    background-color: rgba(0,0,0,.1);
+  }
+
+  .styleguide-status-label,
+  .styleguide-status-description {
+    display: table-cell;
+    padding: 8px 12px;
+  }
+
+  .styleguide-status-deprecated {
+    background-color: #df3e3e;
+  }
+  .styleguide-status-deprecated,
+  .styleguide-status-deprecated p {
+    color: #fff;
+  }
+  .styleguide-status-deprecated .styleguide-status-label {
+    color: rgba(255,255,255,.8);
+  }
+
+  .styleguide-status-experimental {
+    background-color: #fc0;
+  }
+  .styleguide-status-experimental,
+  .styleguide-status-experimental p {
+    color: rgba(0,0,0,.65);
+  }
+  .styleguide-status-experimental .styleguide-status-label {
+    color: rgba(0,0,0,.5);
+  }
+
   .styleguide-description {
     padding: 15px;
     font-family: Helvetica, Arial, sans-serif;
