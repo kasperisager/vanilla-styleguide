@@ -16,11 +16,15 @@ $highlighter->setLexer(new \FSHL\Lexer\Html());
       <?php foreach ($overview as $item) {
         $path = 'vanilla/styleguide';
 
-        if ($item->getReference() !== '0') {
-          $path .= '/' . $item->getReference();
+        if ($item->getReference(true) !== '0') {
+          $path .= '/' . strtolower($item->getReference(true));
         }
 
-        $text = $item->getReference() . '. ' . $item->getTitle();
+        $text = $item->getTitle();
+
+        if ($item::isReferenceNumeric($item->getReference(true))) {
+          $text = $item->getReference(true) . '. ' . $text;
+        }
 
         echo Gdn_Theme::Link($path, $text);
       } ?>
@@ -39,9 +43,11 @@ $highlighter->setLexer(new \FSHL\Lexer\Html());
     </div>
 
     <?php foreach ($children as $child): ?>
-      <div class="styleguide-block" id="r<?php echo $child->getReference(); ?>">
+      <div class="styleguide-block">
         <h3 class="styleguide-header">
-          <span class="styleguide-reference"><?php echo $child->getReference(); ?></span>
+          <?php if ($child::isReferenceNumeric($child->getReference(true))): ?>
+            <span class="styleguide-reference"><?php echo $child->getReference(true); ?></span>
+          <?php endif; ?>
           <span class="styleguide-title"><?php echo $child->getTitle(); ?></span>
           <span class="styleguide-filename"><?php echo $child->getFilename(); ?></span>
         </h3>
@@ -94,24 +100,45 @@ $highlighter->setLexer(new \FSHL\Lexer\Html());
               <?php endforeach; ?>
             </ul>
           <?php endif; ?>
+
+          <?php if (count($child->getParameters()) > 0): ?>
+            <ul class="styleguide-parameters">
+              <?php foreach ($child->getParameters() as $parameter): ?>
+                <li>
+                  <span class="styleguide-parameter-name">
+                    <?php echo $parameter->getName(); ?>
+                  </span>
+                  <?php if ($parameter->getDescription()): ?>
+                    - <?php echo Gdn_Format::Markdown($parameter->getDescription()); ?>
+                  <?php endif; ?>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
+
+          <?php if ($child->getCompatibility()): ?>
+            <p class="styleguide-compatibility"><?php echo nl2br($child->getCompatibility()); ?></p>
+          <?php endif; ?>
         </div>
 
-        <div class="styleguide-elements">
-            <div class="styleguide-element">
-              <?php echo $child->getMarkupNormal(); ?>
-            </div>
-
-            <?php foreach ($child->getModifiers() as $modifier): ?>
-              <div class="styleguide-element styleguide-element-modifier<?php ($modifier->isExtender()) ? ' styleguide-element-extender' : ' '; ?>">
-                <span class="styleguide-element-modifier-label<?php echo ($modifier->isExtender()) ? ' styleguide-element-modifier-label-extender' : ' '; ?>"><?php echo $modifier->getName(); ?></span>
-                <?php echo $modifier->getExampleHtml(); ?>
+        <?php if ($child->hasMarkup()): ?>
+          <div class="styleguide-elements">
+              <div class="styleguide-element">
+                <?php echo $child->getMarkupNormal(); ?>
               </div>
-            <?php endforeach; ?>
-        </div>
 
-        <div class="styleguide-html">
-          <pre class="styleguide-code"><code><?php echo $highlighter->highlight($child->getMarkupNormal('{class}')); ?></code></pre>
-        </div>
+              <?php foreach ($child->getModifiers() as $modifier): ?>
+                <div class="styleguide-element styleguide-element-modifier<?php ($modifier->isExtender()) ? ' styleguide-element-extender' : ' '; ?>">
+                  <span class="styleguide-element-modifier-label<?php echo ($modifier->isExtender()) ? ' styleguide-element-modifier-label-extender' : ' '; ?>"><?php echo $modifier->getName(); ?></span>
+                  <?php echo $modifier->getExampleHtml(); ?>
+                </div>
+              <?php endforeach; ?>
+          </div>
+
+          <div class="styleguide-html">
+            <pre class="styleguide-code"><code><?php echo $highlighter->highlight($child->getMarkupNormal('{class}')); ?></code></pre>
+          </div>
+        <?php endif; ?>
       </div>
     <?php endforeach; ?>
   </main>

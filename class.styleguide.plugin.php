@@ -79,7 +79,7 @@ class StyleguidePlugin extends Gdn_Plugin {
 
     $sender->setData('overview', $styleguide->getTopLevelSections());
 
-    $section = (isset($args[0]) && is_numeric($args[0])) ? $args[0] : 0;
+    $section = (isset($args[0])) ? $args[0] : 0;
 
     try {
       $sender->setData('section', $styleguide->getSection($section));

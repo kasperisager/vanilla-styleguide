@@ -250,6 +250,11 @@
     background-color: #fafafa;
     border-bottom: 1px solid #eee;
   }
+  .styleguide-description:last-child {
+    border-bottom: 0;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+  }
   .styleguide-description p {
     margin: 15px 0;
   }
@@ -279,10 +284,15 @@
 
   .styleguide-parameters {
     margin: 0 0 0 10px;
+    list-style: none;
   }
   .styleguide-parameters li {
     list-style-type: none;
     margin-left: 0;
+  }
+  .styleguide-parameters p {
+    display: inline;
+    margin: 0;
   }
 
   .styleguide-parameter-name {
